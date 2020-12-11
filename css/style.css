@@ -1,0 +1,155 @@
+*{
+	margin:0;
+	padding:0;
+
+}
+.container
+{
+	width:80%;
+	margin:auto;
+	overflow:auto; 
+}
+ 
+body
+ {
+ 	background-color: lightgrey;
+ 	margin:0;
+ }
+
+ #header
+{
+	background-color: coral;
+	color:#fff;
+	text-align: center;
+}
+#bar
+{
+	background-color: red;
+	overflow: hidden;
+	text-align: right;
+	
+}
+
+#bar ul
+{
+	padding:0;
+	list-style: none;
+}
+
+#bar li
+	{
+		display:inline;
+	}
+
+#bar a 
+{
+  padding-right:15px;
+  color:white;
+  font-size: 18px;
+  text-decoration: none
+}
+
+.login
+{
+	width: 500px;
+	height:400px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(44, 62, 80,0.7);
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+input[type="text"],input[type="password"]
+{
+	margin-top: 30px;
+	height: 45px;
+	width: 300px;
+	font-size: 18px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding-left: 40px;
+}
+h1
+{
+	margin:0;
+	padding: 20px;
+	text-align: center;
+	font-size: 32px;
+	color:#fff;
+}
+
+.btn
+{
+	padding: 15px 25px;
+	border: none;
+	background-color: #5AD9E0;
+	color: #fff;
+	font: bold 18px serif;
+}
+
+
+
+.image 
+{
+  	margin: 5px;
+  	border: 1px solid #ccc;
+  	float: left;
+	width:390px;
+ 
+}
+
+.image:hover 
+{
+   box-shadow: 0 0 2px 1px red;
+}
+
+.image img
+{
+  width: 100%;
+  height: auto;
+}
+.disc{
+
+	white-space: nowrap; 
+	text-overflow:ellipsis;
+	overflow: hidden;
+	padding: 1rem;
+	text-align: center;
+	background-color:#594848;
+	color:white;
+	
+}
+
+.productf
+{
+	width: 600px;
+	height:500px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(44, 62, 80,0.7);
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+td
+{
+	font:bold 14px sherif;
+}
+#t1 table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#t1 th{
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align:center;
+  background-color: coral;
+}
+#t1 td{
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+ 
+}

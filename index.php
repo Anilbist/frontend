@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Product</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<header id="header">
@@ -13,38 +13,37 @@
 			<h1>Product Management</h1>
 		</div>
 	</header>
+	
 		<nav id= "bar">
-			<div class ="container" >
+			<div class="container">
 				<ul>
-					<li><a href ="">Home</a></li>
+					<li><a href ="index.php">Home</a></li>
 					<li><a href ="">Products</a></li>
 					<li><a href ="">About Us</a></li>
 					<li><a href ="form.php">Account</a></li>
 				</ul>
-			</div>
+				</div>
 		</nav>
-		<div class ="container" >
-	<div class="image">
-  		<a target="_blank" href="producti/anil.jpg">
-    		<img src="producti/anil.jpg"  width="600" height="400">
-  		</a>
-  			<div class="desc">Add a description of the image here</div>
-	</div>
-
-	<div class="image">
-		<a target="_blank" href="producti/book.jpg">
-		    <img src="producti/book.jpg"  width="600" height="400">
-		</a>
-	  		<div class="desc">Add a description of the image here</div>
-	</div>
-
-	<div class="image">
-	  	<a target="_blank" href="producti/laptop.jpg">
-	    	<img src="producti/laptop.jpg"  width="600" height="400">
-	  	</a>
-	  		<div class="desc">Add a description of the image here</div>
+		<?php
+		include 'db.php';
+		include 'product.php';
+		$database= new Datab;
+		$db = $database->connect();
+		$add= new product($db);
+		$query = $add->view();
+      	while($row = $query->fetch(PDO::FETCH_OBJ)){ 
+      		
+		?>
+		
+			<div class="image">
+				<a target="_blank" href="<?php echo $row->pimage ?>">
+				<img src="<?php echo $row->pimage ?>" >
+				</a>
+				<div class = "disc"> <?php echo $row->pname ?> </div>
 	</div>
 </div>
-
+<?php
+}
+?>
 </body>
 </html>
