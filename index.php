@@ -22,7 +22,7 @@
 					<li><a href ="">About Us</a></li>
 					<li><a href ="form.php">Account</a></li>
 				</ul>
-				</div>
+			</div>
 		</nav>
 		<?php
 		include 'db.php';
@@ -32,16 +32,16 @@
 		$add= new product($db);
 		$query = $add->view();
       	while($row = $query->fetch(PDO::FETCH_OBJ)){ 
-      		
+
 		?>
-		
+			<div class="container">	
 			<div class="image">
-				<a target="_blank" href="<?php echo $row->pimage ?>">
-				<img src="<?php echo $row->pimage ?>" >
+				<a href="view.php?ID=<?php echo $row->sn; ?>">
+				<img src="<?php echo $row->pimage ?>">
 				</a>
-				<div class = "disc"> <?php echo $row->pname ?> </div>
+				<div class = "disc" alt="anil" > <?php echo $row->pname ?> </div>
+			</div>
 	</div>
-</div>
 <?php
 }
 ?>

@@ -16,10 +16,25 @@ if(!isset($_SESSION['username']))
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class ="container">
+	<header id="header">
+		<div class ="container">
 	<h1>List of All Product </h1>
+		</div>
+	</header>
+	
+		<nav id= "bar">
+			<div class="container">
+				<ul>
+					<li><a href ="login.php">Home</a></li>
+					<li><a href ="addproduct.php">Add Product</a></li>
+					<li><a href ="list.php">List</a></li>
+					<li><a href ="logout.php">Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+	
 	<div id="t1">
-		<table align= "centre" border="1px">
+		<table>
 			<thead> 
 				<t>
 					<th>Name</th>
@@ -54,7 +69,6 @@ if(!isset($_SESSION['username']))
  }
 
 ?>
-<a href="login.php">Back</a>
 <script>
 	function checkDelete(){
 		return confirm('do you want to delete this product');

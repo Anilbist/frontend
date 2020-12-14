@@ -47,9 +47,11 @@ $database= new Datab;
 		?>
 		<div class ="container" >
 			<div class="image">
-				<a target="_blank" href="<?php echo $row->pimage ?>">
-				<img src="<?php echo $row->pimage ?>" width="600" height="400">
+				<a href="view.php?ID=<?php echo $row->sn; ?>">
+				<img src="<?php echo $row->pimage ?>">
 				</a>
+			<div class = "disc" > <?php echo $row->pname ?> </div>
+
 			</div>
 		</div>
 		<?php

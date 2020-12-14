@@ -16,8 +16,22 @@ if(!isset($_SESSION['username']))
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<header id="header">
+    <div class ="container">
+      <h1>Add Product</h1>
+    </div>
+  </header>
+    <nav id= "bar">
+      <div class="container">
+        <ul>
+          <li><a href ="login.php">Home</a></li>
+          <li><a href ="">Products</a></li>
+          <li><a href ="">About Us</a></li>
+          <li><a href ="logout.php">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
 	<div class = "productf">
-		<h1> Add Product</h1>
 	<form action="formaction.php" method = "post" enctype="multipart/form-data">
 		<table>
 			
