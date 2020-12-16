@@ -31,6 +31,21 @@ h1
 	font-size: 32px;
 	color:#fff;
 }
+h2{
+	margin:0;
+	padding: 10px;
+	text-align: left;
+	font-size: 32px;
+	color:black;
+}
+p
+{
+	margin:0;
+	padding: 10px;
+	text-align: left;
+	font-size: 16px
+	color:grey;
+}
 #bar
 {
 	text-align: right;
@@ -173,27 +188,6 @@ input[type="text"],input[type="password"]
   	object-fit: contain;
 }
 
-.box 
-{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px;
-  display: flex;
-}
-
-
-.leftside img
- {
-  width: 100%;
-  margin-top: 100px;
-	margin-bottom: 100px;
-  
-}
-.leftside :hover
-{
-	/*transform: scale(1.5);*/
-}
-
 .name span 
 {
   font-size: 12px;
@@ -201,6 +195,7 @@ input[type="text"],input[type="password"]
   letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
 }
 .name p 
 {
@@ -208,6 +203,7 @@ input[type="text"],input[type="password"]
   font-weight: 300;
   color: #86939E;
   line-height: 24px;
+   cursor: pointer;
 }
 .price 
 {
@@ -221,14 +217,9 @@ input[type="text"],input[type="password"]
   font-weight: 300;
   color: #43474D;
   margin-right: 20px;
-}
-#myImg {
-  border-radius: 15px;
-  cursor: pointer;
-  transition: 0.3s;
+   cursor: pointer;
 }
 
-#myImg:hover {opacity: 0.5;}
 
 
 .modal {
@@ -242,6 +233,7 @@ input[type="text"],input[type="password"]
   overflow: auto; 
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.9); 
+
 }
 
 .modal-content {
@@ -249,18 +241,6 @@ input[type="text"],input[type="password"]
   display: block;
   width: 80%;
   max-width: 700px;
-}
-
-
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
 }
 
 .close {
@@ -277,6 +257,94 @@ input[type="text"],input[type="password"]
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+#content-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.column{
+	width: 600px;
+	padding: 10px;
+
+}
+
+#featured
+{	
+	margin-top: 100px;
+	width: 600px;
+	height: 500px;
+	max-width: 500px;
+	max-height: 600px;
+	object-fit: cover;
+	cursor: pointer;
+	border: 2px solid green;
+
+}
+#featured:hover
+{
+	box-shadow: 0 0 2px 1px red;
+}
+
+.thumbnail
+{
+	object-fit: cover;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+	opacity: 0.5;
+	margin: 5px;
+	border: 2px solid black;
+
+}
+
+.thumbnail:hover
+{
+	opacity:1;
+}
+
+.active
+{
+	opacity: 1;
+}
+
+#slide-wrapper
+{
+	max-width: 500px;
+	display: flex;
+	min-height: 100px;
+	align-items: center;
+}
+
+#slider
+{
+	width: 500px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: hidden;
+}
+
+.arrow
+{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 5px;
+	transition: .3s ease;
+	 border-radius: 3px 0 0 3px;
+}
+
+.arrow:hover{
+	opacity: 0.5;
+	width: 30px;
+	height: 30px;
+	background-color: rgba(0,0,0,0.8);
 }
 
 

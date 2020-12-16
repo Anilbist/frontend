@@ -24,10 +24,10 @@ if(!isset($_SESSION['username']))
     <nav id= "bar">
       <div class="container">
         <ul>
-          <li><a href ="login.php">Home</a></li>
-          <li><a href ="">Products</a></li>
-          <li><a href ="">About Us</a></li>
-          <li><a href ="logout.php">Logout</a></li>
+         <li><a href ="login.php">Home</a></li>
+		<li><a href ="addproduct.php">Add Product</a></li>
+		<li><a href ="list.php">List</a></li>
+		<li><a href ="logout.php">Logout</a></li>
         </ul>
       </div>
     </nav>
