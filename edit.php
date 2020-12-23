@@ -40,7 +40,7 @@ session_start();
     	    <tr>
                 <td><b>Product Discription:</b></td>
                 <td>
-                      <input type="text" name="p_dis"  value="<?php echo $row->pdis?>">
+                      <textarea  name="p_dis" rows="10" cols="46"><?php echo $row->pdis ?></textarea></td>
                 </td>
           </tr>
     	    <tr>
@@ -49,6 +49,21 @@ session_start();
                       <input type="text" name="p_price" value="<?php echo $row->pprice?>">
                 </td>
           </tr>
+          <tr>
+        <td>Product Category:</td>
+        <td><select name="product_cat">
+                
+                       <option>categories</option>
+        
+        <?php
+            $query=$add->view_cat();
+            while($row= $query->fetch(PDO::FETCH_OBJ)){
+        ?>
+        <option value="<?php echo $row->cat_id?>"><?php echo $row->cat_name ?></option>
+                       <?php }
+      ?>
+      </select></td>
+      </tr>
           <tr>
                 <td><b>Product Image:</b> </td>
                      <?php

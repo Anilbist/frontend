@@ -1,4 +1,19 @@
-
+<?php	include 'db.php';
+		include 'product.php';
+		$database= new Datab;
+		$db = $database->connect();
+		$add= new product($db);
+		session_start();
+		if(isset($_SESSION['username']))
+		{
+			echo "welcome".' '.$_SESSION['username'];
+		}
+		else
+		{
+			header('location:form.php');
+			die();
+		}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +25,12 @@
 </head>
 
 <body>
-	<header id="header">
+	<!-- <header id="header">
 		<div class ="container">
 			<h1>PRODUCTS</h1>
 		</div>
-	</header>
-		<nav id= "bar">
+	</header> -->
+		<div class= "bar">
 			<div class ="container" >
 				<ul>
 					<li><a href ="login.php">Home</a></li>
@@ -24,27 +39,26 @@
 					<li><a href ="logout.php">Logout</a></li>
 				</ul>
 			</div>
-		</nav>
-		<?php include 'db.php';
-		include 'product.php';
-		
+		</div>
+		<div class="sidebar">
+			<header> Cateogries</header>
+			<ul class="sidebar">
+				<li>
+			
+				<a href="add_cat.php">Add Category</a>
+				<a href="view_cat.php">view</a>
+				
 
-session_start();
-if(isset($_SESSION['username']))
-{
-	echo "welcome".' '.$_SESSION['username'];
-}
-else
-{
-	header('location:form.php');
-	die();
-}
-$database= new Datab;
-		$db = $database->connect();
-		$add= new product($db);
-		$query = $add->view();
-      	while($row = $query->fetch(PDO::FETCH_OBJ)){ 
+		</li>
+			</ul>
+
+		</div>
+		
+		<?php 	
+				$query = $add->view();
+		      	while($row = $query->fetch(PDO::FETCH_OBJ)){ 
 		?>
+	
 		<div class ="container" >
 			<div class="image">
 				<a href="view.php?ID=<?php echo $row->sn; ?>">
@@ -55,8 +69,8 @@ $database= new Datab;
 			</div>
 		</div>
 		<?php
-	}
-?>
+			}
+		?>
 	
 </body>
 </html>

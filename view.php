@@ -1,11 +1,11 @@
 <?php include 'db.php';
-include 'product.php';
-    $database= new Datab;
-    $db = $database->connect();
-    $add= new product($db);
+      include 'product.php';
+      $database= new Datab;
+      $db = $database->connect();
+      $add= new product($db);
       $Pro_sn=$_GET['ID'];
-        $query =$add->edit($Pro_sn);
-        while($row = $query->fetch(PDO::FETCH_OBJ)){ 
+      $query =$add->edit($Pro_sn);
+      while($row = $query->fetch(PDO::FETCH_OBJ)){ 
       $query1=$db->prepare("SELECT * FROM image where pi_id=$Pro_sn ");
       $query1->execute();
       $count=$query1->rowCount();
@@ -27,7 +27,7 @@ include 'product.php';
     </div>
   </header>
   
-    <nav id= "bar">
+    <div class= "bar">
       <div class="container">
         <ul>
          <li><a href ="index.php">Home</a></li>
@@ -36,7 +36,7 @@ include 'product.php';
           <li><a href ="form.php">Account</a></li>
         </ul>
       </div>
-    </nav>
+    </div>
         <div id="content-wrapper">
             <div class="column">
               <img id="featured" src="<?php echo $row1->pimage ?>">
@@ -45,7 +45,7 @@ include 'product.php';
                 <img class="modal-content" id="img01">
               </div>
                 <div id="slide-wrapper">
-                    <a id="slideLeft"  class ="arrow" onclick="plusSlides(-1)">&#10094;</a>
+                    <a id="slideLeft"  class ="arrow" >&#10094;</a>
                     <div id ="slider">
                      <img class="thumbnail active"  src="<?php echo $row1->pimage ?>">
                      <?php

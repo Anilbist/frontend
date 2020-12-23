@@ -21,7 +21,7 @@ if(!isset($_SESSION['username']))
       <h1>Add Product</h1>
     </div>
   </header>
-    <nav id= "bar">
+    <div class= "bar">
       <div class="container">
         <ul>
          <li><a href ="login.php">Home</a></li>
@@ -30,7 +30,7 @@ if(!isset($_SESSION['username']))
 		<li><a href ="logout.php">Logout</a></li>
         </ul>
       </div>
-    </nav>
+   </div>
 	<div class = "productf">
 	<form action="formaction.php" method = "post" enctype="multipart/form-data">
 		<table>
@@ -41,11 +41,31 @@ if(!isset($_SESSION['username']))
 			</tr>
 			<tr>
 				<td>Product Discription:</td>
-				<td><input type="text" name="p_dis"></td>
+				<td><textarea  name="p_dis" rows="10" cols="46"></textarea></td>
 			</tr>
 			<tr>
 				<td>Product Price:</td>
 				<td> <input type="text" name="p_price"></td>
+			</tr>
+			<tr>
+				<td>Product Category:</td>
+				<td><select name="product_cat">
+    						
+                       <option>Choose Category</option>
+				
+				<?php 
+						include 'db.php';
+						include 'product.php';
+						$database =new Datab();
+						$db = $database->connect();
+						$view = new product($db);
+						$query=$view->view_cat();
+						while($row= $query->fetch(PDO::FETCH_OBJ)){
+				?>
+				<option value="<?php echo $row->cat_id?>"><?php echo $row->cat_name ?></option>
+                       <?php }
+			?>
+			</select></td>
 			</tr>
 			<tr>
 				<td>Product Image:</td>

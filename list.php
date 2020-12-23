@@ -1,7 +1,10 @@
-<?php 
+<?php  	include 'db.php';
+		include 'product.php';
+		$database= new Datab;
+		$db = $database->connect();
+		$add= new product($db); 
 session_start();
 if(!isset($_SESSION['username']))
-
 {
 	header('location:form.php');
 	die();
@@ -22,7 +25,7 @@ if(!isset($_SESSION['username']))
 		</div>
 	</header>
 	
-		<nav id= "bar">
+		<div class= "bar">
 			<div class="container">
 				<ul>
 					<li><a href ="login.php">Home</a></li>
@@ -31,8 +34,23 @@ if(!isset($_SESSION['username']))
 					<li><a href ="logout.php">Logout</a></li>
 				</ul>
 			</div>
-		</nav>
-	
+		</div>
+		
+	<aside style="width:10%; float:left;background-color: yellow; padding: 5px; height :300px;  position: fixed">
+		<h2> Categories</h2>
+
+		<?php
+			$query=$add->view_cat();
+			while($row= $query->fetch(PDO::FETCH_OBJ))
+			{
+				?>
+				<a href="<?php echo $row->cat_name."<br>"; ?>"><?php echo $row->cat_name ."<br>"; ?>
+				</a>
+				<?php
+			}
+		?>
+	</aside >
+
 	<div id="t1">
 		<table>
 			<thead> 
@@ -45,11 +63,12 @@ if(!isset($_SESSION['username']))
 				</t>
 			</thead>
 
-	<?php include 'db.php';
-		include 'product.php';
-		$database= new Datab;
-		$db = $database->connect();
-		$add= new product($db);
+	<?php 
+	// include 'db.php';
+	// 	include 'product.php';
+	// 	$database= new Datab;
+	// 	$db = $database->connect();
+	// 	$add= new product($db);
 		$query = $add->view();
       	while($row = $query->fetch(PDO::FETCH_OBJ)){ 
       	 	
@@ -61,7 +80,7 @@ if(!isset($_SESSION['username']))
 			<td><img src="<?php echo $row->pimage ?>"></td>
 			<td><a href="edit.php?ID=<?php echo $row->sn; ?>" class ="btn">Edit</a>
 			</td>
-			<td><a href="formaction.php?del=<?php echo $row->sn; ?>" onclick= "return checkDelete()" class ="btn">Delete</a></td>
+			<td><a href="formaction.php?del_p=<?php echo $row->sn; ?>" onclick= "return checkDelete()" class ="btn">Delete</a></td>
 		</tr>
 	
 	<?php
@@ -78,6 +97,7 @@ if(!isset($_SESSION['username']))
 			
 		</table>
 	</div>
-</div>
+
+
 </body>
 </html>

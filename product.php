@@ -13,14 +13,15 @@ class product{
 			return $query;
 		}
 
-		public function insert($Name,$Disp,$Price)
+		public function insert($Name,$Disp,$Price,$Cat)
 		{
-			$add_product = $this->conn->prepare("INSERT INTO prod(pname,pdis,pprice) values(?,?,?)");
-	        $add_product->execute([$Name,$Disp,$Price]);
+			$add_product = $this->conn->prepare("INSERT INTO prod(pname,pdis,pprice,id) values(?,?,?,?)");
+	        $add_product->execute([$Name,$Disp,$Price,$Cat]);
 	        $last_id = $this->conn->lastInsertId();
 			for($i=0; $i< count($_FILES['p_image']['name']); $i++)
 			{
 				$this->image($last_id,$i);
+				$this->cat($last_id);
       		}
 	      	return $add_product;
 		}
@@ -35,10 +36,14 @@ class product{
 		     	move_uploaded_file($_FILES['p_image']['tmp_name'][$i],$dst);
 		     	$query1 = $this->conn->prepare("INSERT INTO image(pi_id,pimage) values(?,?) ");
 		      	$query1->execute([$last_id,$dst]);
-
 	      		return $query1;
 		}
 
+		public function cat($last_id)
+		{
+			$query1 = $this->conn->prepare("INSERT INTO cat_detail(pro_id) values(?) ");
+		      	$query1->execute([$last_id]);
+		}
 
  		public function view()
 		{
@@ -55,10 +60,10 @@ class product{
 	      	return $query;
 		}
 
-		public function update($Pro_name,$Pro_dis,$Pro_price,$Pro_sn)
+		public function update($Pro_name,$Pro_dis,$Pro_price,$Pro_cat,$Pro_sn)
 		{
-			$query= $this->conn->prepare("UPDATE prod SET pname =?,pdis = ?,pprice=? WHERE sn =?");
-			$query->execute([$Pro_name,$Pro_dis,$Pro_price,$Pro_sn]);
+			$query= $this->conn->prepare("UPDATE prod SET pname =?,pdis = ?,pprice=?,id=? WHERE sn =?");
+			$query->execute([$Pro_name,$Pro_dis,$Pro_price,$Pro_cat,$Pro_sn]);
 			
 			for($i=0; $i< count($_FILES['p_image']['name']); $i++)
 			{
@@ -86,6 +91,49 @@ class product{
 			$Query = $this->conn->prepare("DELETE FROM prod WHERE sn=?");
 			$Query->execute([$Pro_sn]);
 			return $Query;
+		}
+		public function add_cat($cat_name)
+		{
+			$add_cat = $this->conn->prepare("INSERT INTO category(cat_name) values(?) ");
+	        $add_cat->execute([$cat_name]);
+	        return $add_cat;	
+		}
+
+		public function view_cat()
+		{
+			$query=$this->conn->prepare("SELECT * FROM category");
+			$query->execute();
+			return $query;
+		}
+
+		public function edit_cat($Cat_id)
+		{
+			$query=$this->conn->prepare("SELECT * FROM category WHERE cat_id=?");
+			$query->execute([$Cat_id]);
+			return $query;
+		}
+
+		public function update_cat($Cat_id,$Cat_name)
+		{
+			$query=$this->conn->prepare("UPDATE category SET cat_name=? WHERE cat_id='$Cat_id'");
+			$query->execute([$Cat_name]);
+			return $query;
+		}
+
+
+		public function del_cat($Cat_id)
+		{
+			$query = $this->conn->prepare("DELETE From category WHERE cat_id=?");
+			$query->execute([$Cat_id]);
+			return $query;
+		}
+
+		public function viewpro_cat($Cat_id)
+		{
+			$query = $this->conn->prepare("SELECT * FROM prod where id=?");
+      		$query->execute([$Cat_id]);
+      		
+      		return $query;
 		}
 }
 ?>
